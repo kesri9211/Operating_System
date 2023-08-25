@@ -1,5 +1,9 @@
+package OS;
+
 import java.util.Scanner;
+
 public class fcfs {
+
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         System.out.println("enter number of input");
@@ -12,6 +16,19 @@ public class fcfs {
         int bu[] = new int[n];
         for (int i = 0; i < n; i++)
             bu[i] = sc.nextInt();
+        //arrange the process according to FCFS
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n-i-1;j++){
+                if(ar[j]>ar[j+1]){
+                    int temp=ar[j];
+                    ar[j]=ar[j+1];
+                    ar[j+1]=temp;
+                    temp=bu[j];
+                    bu[j]=bu[j+1];
+                    bu[j+1]=temp;
+                }
+            }
+        }
         //calculating completion time(arrival time+burst time)
         int ct[] = new int[n];
         ct[0] = ar[0] + bu[0];
